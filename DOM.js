@@ -62,7 +62,75 @@
 // const items = document.getElementsByClassName("list-group-item")
 // items[1].style.color = "blue"
 
-let oddItems = document.querySelectorAll("li:nth-child(odd)");
-oddItems.forEach((item)=>{
-      item.style.backgroundColor = "green"
-})
+// let oddItems = document.querySelector("li:nth-child(odd)");
+// oddItems.forEach((item)=>{
+//       item.style.backgroundColor = "green"
+// })
+// console.log(oddItems);
+
+
+// parentElement
+// lastelementchild
+// lastchild
+// createchild
+// firstelementchild
+// firstchild
+// nextsibling
+// nextelementsibling
+// previoussibling
+// previouselementsibling
+// createelement
+// setAttribute
+// createtesxtnode
+// appendchild
+
+// const items = document.querySelector("#items")
+// console.log(items);
+
+// // parent element of ul
+// console.log(items.parentElement);
+
+// //last child of ul
+// console.log(items.lastElementChild);
+
+// // sibling of ul
+// console.log(items.nextSibling);
+// // next siblind node of element aside from textnodes
+// console.log(items.nextElementSibling); //no next sibling of ul
+// console.log(items.previousElementSibling);
+// // output is h2 as expected
+
+// // create element
+// let newLiItem = document.createElement("li")
+
+// //given a class to that element
+// newLiItem.className = "newLiItem"
+
+// //given a id to that element
+// newLiItem.id='newLiItem'
+
+// //given a textcontent to that element
+// newLiItem.textContent="freshly made"
+// //styling added
+// newLiItem.style.color="green"
+
+// // added to dom
+// items.append(newLiItem)
+// //console.log(document);
+
+// creating new text node
+let newTextNode = document.createTextNode("I'm the new textnode")
+
+//creative whole new div
+
+let newDiv = document.createElement("div")
+newDiv.className="hello"
+newDiv.id="hello1"
+newDiv.setAttribute("title" , "HEllo div")
+newDiv.appendChild(newTextNode)
+
+console.log(newDiv);
+
+var contain = document.querySelector("header .container")
+var h1 = document.querySelector('header  h1')
+contain.insertBefore(newDiv , h1)
