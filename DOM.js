@@ -155,23 +155,27 @@ function addItem(e) {
 
       // Get input value
       var newItem = document.getElementById('item').value;
+      var newItem1 = document.getElementById('item1').value;
 
       // Create new li element
       var li = document.createElement('li');
       // Add class
       li.className = 'list-group-item';
       // Add text node with input value
-      li.appendChild(document.createTextNode(newItem));
+      li.appendChild(document.createTextNode(`${newItem}          ${newItem1}`));
 
       // Create del button element
       var deleteBtn = document.createElement('button');
       var editBtn = document.createElement('button');
       // Add classes to del button
       deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
-      editBtn.className = '"btn btn-danger btn-sm float-right edit"'
+      editBtn.className = "btn btn-dark btn-sm float-right  edit"
+      
       // Append text node
       deleteBtn.appendChild(document.createTextNode('X'));
-      editBtn.appendChild(document.createTextNode("E"))
+      editBtn.appendChild(document.createTextNode("Edit"))
+      editBtn.style.marginRight="2%" ;
+      
       // Append button to li
       li.appendChild(deleteBtn);
       li.appendChild(editBtn)
