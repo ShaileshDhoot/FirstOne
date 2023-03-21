@@ -7,45 +7,69 @@
     let fullname = document.getElementById("fullname").value
     console.log(fullname);
 
-    localStorage.setItem("fullname", fullname);
+    
 
     let fathername = document.getElementById("fathername").value
     console.log(fathername);
 
-   localStorage.setItem("fathername", fathername);  
+   
 
     let mothername = document.getElementById("mothername").value
     console.log(mothername);
 
-    localStorage.setItem('mothername', mothername);
-
+   
     let birthdate = document.getElementById("birthdate").value
     console.log(birthdate);
 
-    localStorage.setItem('birthdate',birthdate);
+    
 
     let aadharid = document.getElementById("aadharid").value
     console.log(aadharid);
 
-    localStorage.setItem('aadharid', aadharid);
+    
 
     let address = document.getElementById("address").value
     console.log(address);
 
-    localStorage.setItem('address',address);
+    
 
     let mobileno = document.getElementById("mobileno").value
     console.log(mobileno);
 
-    localStorage.setItem('mobileno',mobileno);
+    
 
     let mailid = document.getElementById("mailid").value
     console.log(mailid);
     
+    
+    // localStorage.setItem("fullname", JSON.stringify(fullname));
+    // localStorage.setItem('mothername', JSON.stringify(mothername));
+    // localStorage.setItem("fathername", JSON.stringify(fathername));  
+    // localStorage.setItem('birthdate',JSON.stringify(birthdate));
+    // localStorage.setItem('aadharid', JSON.stringify(aadharid));
+    // localStorage.setItem('address',JSON.stringify(address));
+    // localStorage.setItem('mobileno', JSON.stringify(mobileno));
+    // localStorage.setItem('mailid', JSON.stringify(mailid));
+  
+    let data1 = {
+      "fullname"   : fullname,
+      "fathername" : fathername,
+      "mothername" : mothername,
+      "birthdate"  : birthdate,
+      "aadharid"   : aadharid,
+      "address"    : address,
+      "mobileno"   : mobileno,
+      "mailid"     : mailid
+    }
+    localStorage.setItem("data1", JSON.stringify(data1))
+    
+ 
 
-    localStorage.setItem('mailid', mailid);
-  }
 
+    }
+  
+    let myData1 = JSON.parse(localStorage.getItem('data1'))
+    console.log(myData1);
 
   // const ul = document.querySelector('.items')
   // //console.log(ul.firstElementChild)
