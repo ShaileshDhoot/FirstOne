@@ -1,16 +1,16 @@
-
-  const data = document.querySelector("#press")  
+const data = document.querySelector("#press")  
   
-  data.addEventListener("click", onRegister)
+data.addEventListener("click", onRegister)
 
-  function onRegister(event) {
-    let fullname = document.getElementById("fullname").value
-    console.log(fullname);
+function onRegister(event) {
+
+  let fullname = document.getElementById("fullname").value
+  console.log(fullname);
 
     
 
-    let fathername = document.getElementById("fathername").value
-    console.log(fathername);
+  let fathername = document.getElementById("fathername").value
+  console.log(fathername);
 
    
 
@@ -40,18 +40,25 @@
 
     let mailid = document.getElementById("mailid").value
     console.log(mailid);
-    
-    
-    // localStorage.setItem("fullname", JSON.stringify(fullname));
-    // localStorage.setItem('mothername', JSON.stringify(mothername));
-    // localStorage.setItem("fathername", JSON.stringify(fathername));  
-    // localStorage.setItem('birthdate',JSON.stringify(birthdate));
-    // localStorage.setItem('aadharid', JSON.stringify(aadharid));
-    // localStorage.setItem('address',JSON.stringify(address));
-    // localStorage.setItem('mobileno', JSON.stringify(mobileno));
-    // localStorage.setItem('mailid', JSON.stringify(mailid));
+    // localStorage.setItem("fullname", (fullname));
+    // localStorage.setItem('mothername', (mothername));
+    // localStorage.setItem("fathername", (fathername));  
+    // localStorage.setItem('birthdate',(birthdate));
+    // localStorage.setItem('aadharid', (aadharid));
+    // localStorage.setItem('address',(address));
+    // localStorage.setItem('mobileno', (mobileno));
+    // localStorage.setItem('mailid', (mailid));
   
-    let data1 = {
+   // make new array to store data on every time we enter new data and dubmit
+    let dataRecords = []
+
+     //condition has been enabled if data is there in array then return that data, else return empty array
+
+      dataRecords=JSON.parse(localStorage.getItem('data1'))?JSON.parse(localStorage.getItem('data1')):[]
+    
+    // push data into array in form of object
+
+    dataRecords.push({
       "fullname"   : fullname,
       "fathername" : fathername,
       "mothername" : mothername,
@@ -60,16 +67,19 @@
       "address"    : address,
       "mobileno"   : mobileno,
       "mailid"     : mailid
-    }
-    localStorage.setItem("data1", JSON.stringify(data1))
-    
- 
+    })
 
+   // set data in array in local storage string format using json method
+    localStorage.setItem("data1", JSON.stringify(dataRecords))
 
-    }
+   // now we push that data into array that we obtain after using JSON method
+     dataRecords.push(JSON.parse(localStorage.getItem('dataRecords')))
+
+    //  console.log(dataRecords);
+  }
   
-    let myData1 = JSON.parse(localStorage.getItem('data1'))
-    console.log(myData1);
+    
+    
 
   // const ul = document.querySelector('.items')
   // //console.log(ul.firstElementChild)
