@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Form with Local Storage</title>
+  <style>
+   
+    .newItem{
+      list-style-type: none
+    }
+    .btn{
+      float: right;
+      margin: auto;      
+    }
+    .edit{
+      margin-right: 5%;
+    }    
+    </style>
+</head>
+<body>
+  <form id="myForm" class="w3-container w3-card-4">
+    <label for="name"  class="w3-text-blue">Name:</label>
+    <input class="w3-input w3-border" type="text" id="name" name="name" required>
+    <br>
+    <label for="mobile"  class="w3-text-blue">Mobile No:</label>
+    <input class="w3-input w3-border" type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+    <br>
+    <label for="email"  class="w3-text-blue">Email:</label>
+    <input class="w3-input w3-border" type="email" id="email" name="email" required>
+    <br>
+    <button class=" w3-btn w3-blue" type="submit">Submit</button>
+  </form>
+
+  <ul class="w3-ul w3-hoverable" id="list">
+
+  </ul>
+  <script>
+    const form = document.querySelector("#myForm")
+    const ul = document.querySelector("#list")
+    
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault()
+      let name = document.querySelector("#name").value    
+      let mobile = document.querySelector("#mobile").value
+      let email = document.querySelector('#email').value
+
+
+ 
+      let personData={
+        name,
+        mobile,
+        email
+      }    
+      
+      localStorage.setItem(personData.email, JSON.stringify(personData))
+    
+    
+    const newLi = document.createElement('li')
+    newLi.className="newItem "
+    newLi.textContent = `${name.value}     ${mobile.value}     ${email.value}`
+    const edit = document.createElement('button')
+    edit.className="edit w3-btn w3-blue btn"
+    edit.name="edit"
+    edit.textContent='Edit'
+    const del = document.createElement('button')  
+    del.className="delete w3-btn w3-blue btn"
+    del.textContent='Delete'
+    del.name='delete'
+
+    ul.appendChild(newLi)
+    newLi.appendChild(del)
+    newLi.appendChild(edit)
+    
+    name.value=""
+    mobile.value=""
+    email.value = ""
+    
+
+    newLi.addEventListener('click', (e)=>{
+
+      if(e.target.classList.contains('delete'))
+      {
+        e.target.parentNode.remove()
+        localStorage.removeItem(personData.email)
+      }
+        
+    })
+  })
+
+  </script>  
+</body>
+</html>
+
+
+
+ 
+
+  
