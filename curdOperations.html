@@ -14,10 +14,11 @@
     }
     .btn{
       float: right;
-      margin: auto;      
+      margin: auto; 
+      display: flex;     
     }
     .edit{
-      margin-right: 5%;
+      margin-right: auto;
     }    
     </style>
 </head>
@@ -44,24 +45,22 @@
     
     form.addEventListener('submit',(e)=>{
       e.preventDefault()
-      let name = document.querySelector("#name").value    
+      let name = document.querySelector("#name") .value   
       let mobile = document.querySelector("#mobile").value
-      let email = document.querySelector('#email').value
-
-
- 
-      let personData={
+      let email = document.querySelector('#email').value 
+      const personData={
         name,
         mobile,
         email
       }    
       
-      localStorage.setItem(personData.email, JSON.stringify(personData))
-    
-    
+      localStorage.setItem(personData.email, JSON.stringify(personData))   
+      const displayPersonData = JSON.parse(localStorage.getItem(personData.email))
+      console.log(displayPersonData);
     const newLi = document.createElement('li')
     newLi.className="newItem "
-    newLi.textContent = `${name.value}     ${mobile.value}     ${email.value}`
+    newLi.textContent = `${name}     ${mobile}     ${email}`
+      console.log(name);
     const edit = document.createElement('button')
     edit.className="edit w3-btn w3-blue btn"
     edit.name="edit"
@@ -73,20 +72,21 @@
 
     ul.appendChild(newLi)
     newLi.appendChild(del)
-    newLi.appendChild(edit)
-    
-    name.value=""
-    mobile.value=""
-    email.value = ""
-    
+    newLi.appendChild(edit)    
 
     newLi.addEventListener('click', (e)=>{
-
       if(e.target.classList.contains('delete'))
       {
         e.target.parentNode.remove()
         localStorage.removeItem(personData.email)
-      }        
+      } 
+     
+      if(e.target.classList.contains('edit'))  
+      {
+        document.querySelector("#name") .value = name
+        document.querySelector("#mobile").value = mobile
+        document.querySelector('#email').value = email
+      }    
     })
   })
 
