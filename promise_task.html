@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 13</title>
+</head>
+<body>
+    <h1>Async - Await</h1>
+
+
+    <script>
+        // console.log('couple1 ; show tickets');
+        // console.log('couple2 ; show tickets');
+
+        // function showTickets () {
+        //     return new Promise((resolve,reject)=>{
+        //              resolve('tickets')          
+        //     })
+        // }
+        // showTickets().then(console.log('couple3 ; show tickets')) // to show promise is in sync   without settimeOut
+        // console.log('couple4 ; show tickets');
+        // console.log('couple5 ; show tickets');
+
+        // console.log('couple1 ; show tickets');
+        // console.log('couple2 ; show tickets');
+
+        // function showTickets () {
+        //     return new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             console.log(`couple3 ; show tickets`)
+        //             resolve('tickets')                         // here promise will be fullfilled after 3sec
+        //         }, 2000);         
+        //     })
+        // }
+        // function getPopcorn () {                                // we can make function separately or in callback of then 
+        //     return new Promise((resolve,reject)=>{ 
+        //         console.log('husband : we should go in');
+        //         console.log('wife : no i am hungry');             // then we have to console.log within funcion only
+        //         setTimeout(() => {
+        //             console.log('husband gets popcorn');
+        //             resolve('popcorn')                         
+        //         }, 2000);         
+        //     })
+        // }
+        // function getButter () {
+        //     return new Promise((resolve, reject) =>{
+        //         console.log('wife says I want butter on it');
+        //         setTimeout(()=>{
+        //             console.log('husband gets butter on popcorn');
+        //             resolve('get butter')
+        //         },2000)
+        //     })
+        // }
+        // function getColdDrink () {
+        //     return new Promise((resolve, reject) =>{
+        //         console.log('husband asks : anything else');
+        //         console.log('wife replies, yes ColdDrink please');
+        //         setTimeout(()=>{
+        //             console.log('husband gets ColdDrink');
+        //             resolve('get coldDrink')
+        //         },2000)
+        //     })
+        // }
+        // function watchMovie () {
+        //     return new Promise ((resolve, reject) =>{
+        //         console.log(('wife syas lets watch movie , we are getting late'));
+        //         setTimeout(()=>{
+        //             console.log('husband looks at god and thank him for Beautiful life and Wonderful wife');
+        //             resolve('watchMovie')
+        //         }, 3000)
+        //     })
+        // }
+
+        // // only 1 function
+        // // showTickets().then((t) =>console.log(`couple3 ; show ${t}`)) // to show promise is async   with settimeOut
+        // // console.log('couple4 ; show tickets');
+        // // console.log('couple5 ; show tickets');
+
+        // showTickets()
+        //     .then(getPopcorn) 
+        //     .then(getButter)
+        //     .then(getColdDrink)
+        //     .then(watchMovie)
+
+        // console.log('couple4 ; show tickets');
+        // console.log('couple5 ; show tickets');
+
+       
+        // LETS USE ASYNC AND AWAIT FUNCTIONALITY
+        console.log('couple1 ; show tickets');
+        console.log('couple2 ; show tickets');
+        const preMovie = async () => {
+
+            const showTickets = new Promise ((resolve, reject)=>{
+                setTimeout(()=>resolve('ticket'),3000)
+            })
+            const getPopcorn = new Promise ((resolve, reject)=> resolve('popcorn'))
+            const getButter = new Promise ((resolve, reject)=> resolve('butter'))
+            const getColdDrink = new Promise ((resolve, reject)=> resolve('colddrink'))
+            const watchMovie = new Promise ((resolve, reject)=> resolve('movie'))
+
+            let ticket = await showTickets
+            console.log('wife : i have tickets');
+            console.log('husband : we should go in');
+            console.log('wife : no i\'m hungry');
+
+            let Popcorn = await getPopcorn
+            console.log('Husband : i got some popcorn');
+            console.log('husband : we should go in');
+            console.log('wife : i need butter on my popcorn');
+
+            let butter = await getButter
+            console.log('husband : i got some butter');
+            console.log('husband : anything else');
+            console.log('wife :  yes coldDrink please');
+
+            let colddrink = await getColdDrink
+            console.log('husband : here\'s your cold drink');
+            console.log('husband : shall we go');
+
+            let movie = await watchMovie
+            console.log('wife syas lets watch movie , we are getting late')
+            console.log('husband looks at god and thank him for Beautiful life and Wonderful wife');
+
+            return ticket
+        }
+        preMovie().then((m)=> console.log(`couple3 : shows ${m}`))
+
+        console.log('couple4 ; show tickets');
+        console.log('couple5 ; show tickets');
+
+    </script>
+</body>
+</html>
